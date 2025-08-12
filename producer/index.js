@@ -8,12 +8,14 @@ async function produce() {
   const channel = await connection.createChannel();
   // queue name
   const queue = "hello";
+
   // var incremented every second
-  const count = 0;
+  let count = 0;
   setInterval(() => {
     const message = `Message ${count}`;
     channel.sendToQueue(queue, Buffer.from(message));
     console.log(`[x] Sent ${message}`);
+    count++;
   }, 1000);
 }
 
