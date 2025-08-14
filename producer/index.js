@@ -1,7 +1,7 @@
 const amqp = require("amqplib");
 
 // produce messages to a classic queue
-async function produce() {
+(async function () {
   // physical connection
   const connection = await amqp.connect("amqp://guest:guest@localhost:5672/");
   // virtual connection
@@ -17,6 +17,4 @@ async function produce() {
     console.log(`[x] Sent ${message}`);
     count++;
   }, 1000);
-}
-
-produce();
+})();
